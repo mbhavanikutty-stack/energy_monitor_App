@@ -2,6 +2,7 @@
 import React, { useMemo, useState } from "react";
 import "./EnergyMonitor.css";
 import MultiSelect from "./MultiSelect";
+import SuggestionsGrid from "./SuggestionsGrid";
 
 const appliances = [
 	// Kitchen
@@ -92,7 +93,20 @@ const EnergyMonitor = () => {
 		if (Object.keys(newErrors).length > 0) return;
 
 		setLoading(true);
-		const prompt = `The user's household has ${householdSize} people and a monthly energy bill of ${billAmount}. The user has the following appliances: ${selectedAppliances}, and is located in ${location}, ${country}. Generate 5 actionable and personalized tips to help them reduce their energy consumption based on these inputs. For each tip, provide a very rough estimate of the potential annual savings in dollars. Use a bulleted list.`;
+		const prompt = `The user's household has ${householdSize} people and a monthly energy bill of ${billAmount}. 
+						The user has the following appliances: ${selectedAppliances}, and is located in ${location}, ${country}. 
+
+						Based on these inputs, generate at least 5 actionable and personalized energy-saving suggestions. 
+						For each suggestion, provide the following details in a clear and structured format:
+
+						- Title (a short, catchy title for the suggestion with a related emoji at the start)  
+						- Potential Annual Savings (a very rough estimate in US dollars, e.g. "$50–$100 per year")  
+						- Difficulty (rate as Easy, Medium, or Hard, based on effort and cost)  
+						- Time to Implement (rough amount of time, e.g. "a few minutes," "1–2 days," etc.)  
+						- Description (1–2 sentences explaining the action clearly)
+
+						Return the answers as a bulleted list, where each bullet represents one suggestion with all fields included.
+						`;
 
 		try {
 			const response = await fetch(
@@ -129,8 +143,22 @@ const EnergyMonitor = () => {
 	};
 
 	const isSubmitDisabled = useMemo(() => {
-		return loading || !billAmount || !householdSize || !location || !country || selectedAppliances.length === 0;
-	}, [loading, billAmount, householdSize, location, country, selectedAppliances]);
+		return (
+			loading ||
+			!billAmount ||
+			!householdSize ||
+			!location ||
+			!country ||
+			selectedAppliances.length === 0
+		);
+	}, [
+		loading,
+		billAmount,
+		householdSize,
+		location,
+		country,
+		selectedAppliances,
+	]);
 
 	return (
 		<div className="energy-monitor-container">
@@ -191,9 +219,7 @@ const EnergyMonitor = () => {
 						<small className="helper-text">
 							Helps personalize climate‑related tips.
 						</small>
-						{errors.location && (
-							<div className="error-text">{errors.location}</div>
-						)}
+						{errors.location && <div className="error-text">{errors.location}</div>}
 					</div>
 
 					<div className={`form-field ${errors.country ? "has-error" : ""}`}>
@@ -206,9 +232,7 @@ const EnergyMonitor = () => {
 							aria-invalid={!!errors.country}
 							autoComplete="country"
 						/>
-						{errors.country && (
-							<div className="error-text">{errors.country}</div>
-						)}
+						{errors.country && <div className="error-text">{errors.country}</div>}
 					</div>
 				</div>
 
@@ -233,7 +257,7 @@ const EnergyMonitor = () => {
 
 					<div className={`form-field ${errors.appliances ? "has-error" : ""}`}>
 						<label htmlFor="appliances">Appliances</label>
-						
+
 						<MultiSelect
 							id="appliances"
 							options={filteredAppliances.map((a) => ({
@@ -264,7 +288,9 @@ const EnergyMonitor = () => {
 									<button
 										type="button"
 										className="tag-remove"
-										onClick={() => setSelectedAppliances(prev => prev.filter(a => a !== appliance))}
+										onClick={() =>
+											setSelectedAppliances((prev) => prev.filter((a) => a !== appliance))
+										}
 										aria-label={`Remove ${appliance}`}
 									>
 										×
@@ -286,7 +312,6 @@ const EnergyMonitor = () => {
 				</div>
 			</div>
 
-
 			{tips.length === 0 && (
 				<div className="empty-state">
 					<p>
@@ -296,14 +321,14 @@ const EnergyMonitor = () => {
 			)}
 
 			{tips.length > 0 && (
-				<div className="tips-list card">
-					<h2>Your personalized tips</h2>
-					<ul>
-						{tips.map((tip, index) => (
-							<li key={index}>{tip}</li>
-						))}
-					</ul>
-				</div>
+				<SuggestionsGrid
+					tips={tips}
+					billAmount={billAmount}
+					onGetStarted={(tip, index) => {
+						// Handle get started action - could open modal, navigate, etc.
+						console.log(`Getting started with tip ${index + 1}:`, tip);
+					}}
+				/>
 			)}
 		</div>
 	);
