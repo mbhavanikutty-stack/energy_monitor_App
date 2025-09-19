@@ -18,7 +18,8 @@ const MobileNav = () => {
     <div className="mobile-nav">
       <div className="mobile-nav-container">
         <Link to="/" className="brand" onClick={closeMenu}>
-          Energy Saver
+          <img src="/logo192.png" alt="Energy Saver" className="brand-logo" />
+          <span className="brand-text">Energy Saver</span>
         </Link>
 
         <div className="mobile-nav-right">
@@ -58,7 +59,7 @@ const MobileNav = () => {
       <div className={`mobile-menu ${isMenuOpen ? "open" : ""}`}>
         <div className="mobile-menu-header">
           <h3>Navigation</h3>
-          <button 
+          <button
             className="close-menu-btn"
             onClick={closeMenu}
             aria-label="Close navigation menu"

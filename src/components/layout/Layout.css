@@ -58,12 +58,48 @@
   padding: 0 20px;
 }
 
+.nav-container .brand {
+  flex-shrink: 0;
+  min-width: fit-content;
+}
+
 .brand {
   color: var(--text-primary, #0f172a);
   font-weight: 800;
   text-decoration: none;
   font-size: 1.25rem;
   transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.brand:hover .brand-logo {
+  transform: scale(1.05);
+}
+
+.brand-text {
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+/* Hide brand text on very small screens */
+@media (max-width: 480px) {
+  .brand-text {
+    display: none;
+  }
+  
+  .brand-logo {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .nav-center {
@@ -145,6 +181,10 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.mobile-nav-container .brand {
+  flex-shrink: 0;
 }
 
 .mobile-nav-right {
