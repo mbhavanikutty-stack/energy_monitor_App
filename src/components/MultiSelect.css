@@ -88,7 +88,7 @@
 .ms-list {
   max-height: 220px;
   overflow: auto;
-  background: var(--card-bg, #fff);
+  background: var(--bg-secondary, #fff);
 }
 
 .ms-item {
@@ -131,6 +131,19 @@
   background: var(--bg-secondary, #fafafa);
 }
 
+.ms-link {
+  background: transparent;
+  border: none;
+  color: var(--accent-blue-medium, #2563eb);
+  cursor: pointer;
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.ms-link:hover {
+  color: var(--accent-blue-dark, #1d4ed8);
+}
+
 .ms-chips {
   display: flex;
   flex-wrap: wrap;
@@ -139,8 +152,8 @@
 }
 
 .ms-chip {
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
+  background: var(--bg-secondary, #f3f4f6);
+  border: 1px solid var(--border-primary, #e5e7eb);
   padding: 4px 8px;
   border-radius: 999px;
   display: inline-flex;
@@ -153,13 +166,5 @@
   border: none;
   cursor: pointer;
   font-size: 14px;
-  color: #6b7280;
-}
-
-.ms-link {
-  background: transparent;
-  border: none;
-  color: #2563eb;
-  cursor: pointer;
-  font-size: 13px;
+  color: var(--text-secondary, #6b7280);
 }

@@ -6,7 +6,7 @@ import "./Layout.css";
 
 const Layout = () => {
 	return (
-		<div className="site">
+		<div className="site mobile-container">
 			<header className="site-header">
 				<DesktopNav />
 				<MobileNav />
