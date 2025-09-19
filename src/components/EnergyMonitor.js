@@ -1,82 +1,59 @@
 // src/components/EnergyMonitor.js
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import "./EnergyMonitor.css";
 import MultiSelect from "./MultiSelect";
 
-//const API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
-
-/*
-Common Household Appliances:
-  Air Conditioner
-  Refrigerator
-  Freezer
-  Washing Machine
-  Clothes Dryer
-  Dishwasher
-  Oven
-  Microwave Oven
-  Toaster
-  Blender
-  Coffee Maker
-  Vacuum Cleaner
-  Iron
-  Hairdryer
-  Thermostat
-  Television
-  Ceiling Fan
-  Water Heater
-  Slow Cooker
-  Air Fryer
-  Mixer / Stand Mixer
-  Food Processor
-  Electric Grill
-  Kettle
-  Rice Cooker
-  Dehumidifier
-  Electric Blanket
-  Electric Fireplace
-  Pool Pump
-  Dishwasher
-  Food Waste Disposer
-  Electric Tools (Drill, Saw, Impact Driver, etc.)
-  Wi-Fi Router
-  Doorbell (Smart Doorbell)
-*/
-
 const appliances = [
-	{ id: 1, name: "Air Conditioner" },
-	{ id: 2, name: "Refrigerator" },
-	{ id: 3, name: "Washing Machine" },
-	{ id: 4, name: "Dryer" },
-	{ id: 5, name: "Dishwasher" },
-	{ id: 6, name: "Oven" },
-	{ id: 7, name: "Microwave" },
-	{ id: 8, name: "Television" },
-	{ id: 9, name: "Computer" },
-	{ id: 10, name: "Lighting" },
-	{ id: 11, name: "Water Heater" },
-	{ id: 12, name: "Ceiling Fan" },
-	{ id: 13, name: "Coffee Maker" },
-	{ id: 14, name: "Toaster" },
-	{ id: 15, name: "Vacuum Cleaner" },
-	{ id: 16, name: "Iron" },
-	{ id: 17, name: "Hairdryer" },
-	{ id: 18, name: "Thermostat" },
-	{ id: 19, name: "Slow Cooker" },
-	{ id: 20, name: "Air Fryer" },
-	{ id: 21, name: "Mixer" },
-	{ id: 22, name: "Food Processor" },
-	{ id: 23, name: "Electric Grill" },
-	{ id: 24, name: "Kettle" },
-	{ id: 25, name: "Rice Cooker" },
-	{ id: 26, name: "Dehumidifier" },
-	{ id: 27, name: "Electric Blanket" },
-	{ id: 28, name: "Electric Fireplace" },
-	{ id: 29, name: "Pool Pump" },
-	{ id: 30, name: "Food Waste Disposer" },
-	{ id: 31, name: "Electric Tools" },
-	{ id: 32, name: "Wi-Fi Router" },
-	{ id: 33, name: "Smart Doorbell" },
+	// Kitchen
+	{ id: 5, name: "Dishwasher", category: "Kitchen" },
+	{ id: 6, name: "Oven", category: "Kitchen" },
+	{ id: 7, name: "Microwave", category: "Kitchen" },
+	{ id: 13, name: "Coffee Maker", category: "Kitchen" },
+	{ id: 14, name: "Toaster", category: "Kitchen" },
+	{ id: 19, name: "Slow Cooker", category: "Kitchen" },
+	{ id: 20, name: "Air Fryer", category: "Kitchen" },
+	{ id: 21, name: "Mixer", category: "Kitchen" },
+	{ id: 22, name: "Food Processor", category: "Kitchen" },
+	{ id: 23, name: "Electric Grill", category: "Kitchen" },
+	{ id: 24, name: "Kettle", category: "Kitchen" },
+	{ id: 25, name: "Rice Cooker", category: "Kitchen" },
+	{ id: 30, name: "Food Waste Disposer", category: "Kitchen" },
+
+	// Living Room
+	{ id: 8, name: "Television", category: "Living Room" },
+	{ id: 28, name: "Electric Fireplace", category: "Living Room" },
+	{ id: 32, name: "Wi-Fi Router", category: "Living Room" },
+	{ id: 33, name: "Smart Doorbell", category: "Living Room" },
+
+	// Laundry
+	{ id: 3, name: "Washing Machine", category: "Laundry" },
+	{ id: 4, name: "Dryer", category: "Laundry" },
+	{ id: 15, name: "Vacuum Cleaner", category: "Laundry" },
+	{ id: 16, name: "Iron", category: "Laundry" },
+
+	// Bedroom
+	{ id: 27, name: "Electric Blanket", category: "Bedroom" },
+	{ id: 12, name: "Ceiling Fan", category: "Bedroom" },
+
+	// Bathroom
+	{ id: 11, name: "Water Heater", category: "Bathroom" },
+	{ id: 17, name: "Hairdryer", category: "Bathroom" },
+
+	// Office/Study
+	{ id: 9, name: "Computer", category: "Office/Study" },
+
+	// Climate
+	{ id: 1, name: "Air Conditioner", category: "Climate" },
+	{ id: 18, name: "Thermostat", category: "Climate" },
+	{ id: 26, name: "Dehumidifier", category: "Climate" },
+
+	// Outdoor/Utility
+	{ id: 29, name: "Pool Pump", category: "Outdoor/Utility" },
+	{ id: 31, name: "Electric Tools", category: "Outdoor/Utility" },
+
+	// General
+	{ id: 2, name: "Refrigerator", category: "General" },
+	{ id: 10, name: "Lighting", category: "General" },
 ];
 
 const EnergyMonitor = () => {
@@ -88,16 +65,49 @@ const EnergyMonitor = () => {
 	const [loading, setLoading] = useState(false);
 	const [selectedAppliances, setSelectedAppliances] = useState([]);
 	const [errors, setErrors] = useState({});
+	const [selectedCategory, setSelectedCategory] = useState("All");
+	const [isDarkMode, setIsDarkMode] = useState(() => {
+		// Check localStorage for saved theme preference
+		const savedTheme = localStorage.getItem('theme');
+		return savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+	});
+
+	// Apply theme to document body
+	useEffect(() => {
+		document.body.className = isDarkMode ? 'dark-theme' : 'light-theme';
+		localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+	}, [isDarkMode]);
+
+	const toggleTheme = () => {
+		setIsDarkMode(prev => !prev);
+	};
+
+	// Unique categories for dropdown (Task 1)
+	const categories = useMemo(() => {
+		const unique = Array.from(new Set(appliances.map((a) => a.category))).sort(
+			(a, b) => a.localeCompare(b)
+		);
+		return ["All", ...unique];
+	}, []);
+
+	// Filter appliances by selected category (Task 3)
+	const filteredAppliances = useMemo(() => {
+		if (selectedCategory === "All") return appliances;
+		return appliances.filter((a) => a.category === selectedCategory);
+	}, [selectedCategory]);
 
 	const fetchEnergyTips = async () => {
 		const newErrors = {};
 		if (!billAmount) newErrors.billAmount = "Required";
 		if (!householdSize) newErrors.householdSize = "Required";
+		if (!location) newErrors.location = "Required";
+		if (!country) newErrors.country = "Required";
+		if (selectedAppliances.length === 0) newErrors.appliances = "Required";
 		setErrors(newErrors);
 		if (Object.keys(newErrors).length > 0) return;
 
 		setLoading(true);
-		const prompt = `The user's household has ${householdSize} people and a monthly energy bill of $${billAmount}. The user has the following appliances: ${selectedAppliances}, and is located in ${location}, ${country}. Generate 5 actionable and personalized tips to help them reduce their energy consumption based on these inputs. For each tip, provide a very rough estimate of the potential annual savings in dollars. Use a bulleted list.`;
+		const prompt = `The user's household has ${householdSize} people and a monthly energy bill of ${billAmount}. The user has the following appliances: ${selectedAppliances}, and is located in ${location}, ${country}. Generate 5 actionable and personalized tips to help them reduce their energy consumption based on these inputs. For each tip, provide a very rough estimate of the potential annual savings in dollars. Use a bulleted list.`;
 
 		try {
 			const response = await fetch(
@@ -134,15 +144,26 @@ const EnergyMonitor = () => {
 	};
 
 	const isSubmitDisabled = useMemo(() => {
-		return loading || !billAmount || !householdSize;
-	}, [loading, billAmount, householdSize]);
+		return loading || !billAmount || !householdSize || !location || !country || selectedAppliances.length === 0;
+	}, [loading, billAmount, householdSize, location, country, selectedAppliances]);
 
 	return (
 		<div className="energy-monitor-container">
-			<h1>Home Energy Monitor ⚡️</h1>
-			<p className="subtitle">
-				Get quick, personalized tips to lower your electricity bill.
-			</p>
+			{/* Theme Toggle Button */}
+			<button 
+				className="theme-toggle"
+				onClick={toggleTheme}
+				aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+			>
+				{isDarkMode ? '☀️' : '🌙'}
+			</button>
+
+			<div className="header-section">
+				<h1>Home Energy Monitor ⚡️</h1>
+				<p className="subtitle">
+					Get quick, personalized tips to lower your electricity bill.
+				</p>
+			</div>
 			<div className="input-form card">
 				<div className="form-grid">
 					<div className={`form-field ${errors.billAmount ? "has-error" : ""}`}>
@@ -182,43 +203,100 @@ const EnergyMonitor = () => {
 						)}
 					</div>
 
-					<div className="form-field">
+					<div className={`form-field ${errors.location ? "has-error" : ""}`}>
 						<label htmlFor="city">City</label>
 						<input
 							id="city"
 							placeholder="e.g. Austin"
 							value={location}
 							onChange={(e) => setLocation(e.target.value)}
+							aria-invalid={!!errors.location}
 						/>
 						<small className="helper-text">
-							Optional, helps personalize climate‑related tips.
+							Helps personalize climate‑related tips.
 						</small>
+						{errors.location && (
+							<div className="error-text">{errors.location}</div>
+						)}
 					</div>
 
-					<div className="form-field">
+					<div className={`form-field ${errors.country ? "has-error" : ""}`}>
 						<label htmlFor="country">Country</label>
 						<input
 							id="country"
 							placeholder="e.g. USA"
 							value={country}
 							onChange={(e) => setCountry(e.target.value)}
+							aria-invalid={!!errors.country}
+							autoComplete="country"
 						/>
+						{errors.country && (
+							<div className="error-text">{errors.country}</div>
+						)}
 					</div>
 				</div>
 
-				<div className="form-field">
-					<label htmlFor="appliances">Appliances</label>
-					<MultiSelect
-						id="appliances"
-						options={appliances.map((a) => ({
-							id: a.id,
-							name: a.name,
-							value: a.name,
-						}))}
-						value={selectedAppliances}
-						onChange={setSelectedAppliances}
-						placeholder="Search for appliances"
-					/>
+				{/* Category and Appliances side by side */}
+				<div className="appliances-row">
+					<div className="form-field">
+						<label htmlFor="category">Category</label>
+						<select
+							id="category"
+							className="dropdown-button"
+							value={selectedCategory}
+							onChange={(e) => setSelectedCategory(e.target.value)}
+						>
+							{categories.map((cat) => (
+								<option key={cat} value={cat}>
+									{cat}
+								</option>
+							))}
+						</select>
+						<small className="helper-text">Filter appliances by room/type.</small>
+					</div>
+
+					<div className={`form-field ${errors.appliances ? "has-error" : ""}`}>
+						<label htmlFor="appliances">Appliances</label>
+						
+						<MultiSelect
+							id="appliances"
+							options={filteredAppliances.map((a) => ({
+								id: a.id,
+								name: a.name,
+								value: a.name,
+							}))}
+							value={selectedAppliances}
+							onChange={setSelectedAppliances}
+						/>
+						<small className="helper-text">
+							Showing {filteredAppliances.length} of {appliances.length} appliances
+							{selectedCategory !== "All" ? ` in ${selectedCategory}` : ""}.
+						</small>
+						{errors.appliances && (
+							<div className="error-text">{errors.appliances}</div>
+						)}
+					</div>
+				</div>
+
+				<div>
+					{/* Selected appliances tags */}
+					{selectedAppliances.length > 0 && (
+						<div className="selected-appliances-tags">
+							{selectedAppliances.map((appliance) => (
+								<span key={appliance} className="appliance-tag">
+									{appliance}
+									<button
+										type="button"
+										className="tag-remove"
+										onClick={() => setSelectedAppliances(prev => prev.filter(a => a !== appliance))}
+										aria-label={`Remove ${appliance}`}
+									>
+										×
+									</button>
+								</span>
+							))}
+						</div>
+					)}
 				</div>
 
 				<div className="actions">
@@ -231,6 +309,7 @@ const EnergyMonitor = () => {
 					</button>
 				</div>
 			</div>
+
 
 			{tips.length === 0 && (
 				<div className="empty-state">

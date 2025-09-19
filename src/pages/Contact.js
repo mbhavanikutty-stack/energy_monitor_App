@@ -17,7 +17,7 @@ const Contact = () => {
 		<div className="energy-monitor-container">
 			<h1>Contact Us</h1>
 			<p className="subtitle">
-				We’d love to hear from you. Send a note and we’ll reply soon.
+				We'd love to hear from you. Send a note and we'll reply soon.
 			</p>
 
 			{!sent && (
@@ -61,7 +61,7 @@ const Contact = () => {
 				<div className="card">
 					<h2>Thanks, {firstName || "friend"}!</h2>
 					<p className="subtitle">
-						Your message has been received. We’ll be in touch at{" "}
+						Your message has been received. We'll be in touch at{" "}
 						{email || "your email"}.
 					</p>
 					<h3 style={{ marginTop: 16 }}>Your confirmation email</h3>

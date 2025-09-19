@@ -46,6 +46,8 @@
 
 .main { flex: 1; padding: 24px 20px; }
 
-.site-footer { border-top: 1px solid #eef2f7; padding: 16px 0; color: #64748b; }
-
-
+.site-footer { 
+  border-top: 1px solid #eef2f7; 
+  padding: 16px 0; 
+  color: #64748b;
+}

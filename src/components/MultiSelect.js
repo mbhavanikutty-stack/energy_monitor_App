@@ -77,7 +77,6 @@ const MultiSelect = ({
 		else onChange(allValues);
 	};
 
-	const removeChip = (val) => onChange(value.filter((v) => v !== val));
 	const clearAll = () => onChange([]);
 
 	return (
@@ -91,9 +90,8 @@ const MultiSelect = ({
 				onClick={() => setOpen((o) => !o)}
 			>
 				<span className="ms-placeholder">
-					{value.length === 0 ? placeholder : `${value.length}`}
+					Select appliances
 				</span>
-				{value.length > 0 && <span className="ms-count">{value.length}</span>}
 				<span className="ms-caret">▾</span>
 			</button>
 
@@ -115,7 +113,7 @@ const MultiSelect = ({
 						</label>
 
 						{filtered.map((opt) => (
-							<label key={opt.value} className="ms-item">
+							<label key={opt.value} className={`ms-item ${selectedSet.has(opt.value) ? 'selected' : ''}`}>
 								<input
 									type="checkbox"
 									checked={selectedSet.has(opt.value)}
@@ -134,27 +132,6 @@ const MultiSelect = ({
 							Done
 						</button>
 					</div>
-				</div>
-			)}
-
-			{value.length > 0 && (
-				<div className="ms-chips" aria-live="polite">
-					{normalizedOptions
-						.filter((o) => selectedSet.has(o.value))
-						.map((o) => (
-							<span key={o.value} className="ms-chip">
-								{o.label}
-								<button
-									aria-label={`Remove ${o.label}`}
-									onClick={() => removeChip(o.value)}
-								>
-									×
-								</button>
-							</span>
-						))}
-					<button type="button" className="ms-link" onClick={clearAll}>
-						Clear all
-					</button>
 				</div>
 			)}
 		</div>
