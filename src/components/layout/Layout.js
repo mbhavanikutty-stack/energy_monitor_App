@@ -1,23 +1,15 @@
 import React from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import DesktopNav from "../navigation/DesktopNav";
+import MobileNav from "../navigation/MobileNav";
 import "./Layout.css";
 
 const Layout = () => {
 	return (
 		<div className="site">
 			<header className="site-header">
-				<div className="container header-inner">
-					<Link to="/" className="brand">
-						Energy Saver
-					</Link>
-					<nav className="nav">
-						<NavLink to="/" end>
-							Home
-						</NavLink>
-						<NavLink to="/suggest">Suggestions</NavLink>
-						<NavLink to="/contact">Contact</NavLink>
-					</nav>
-				</div>
+				<DesktopNav />
+				<MobileNav />
 			</header>
 
 			<main className="container main">

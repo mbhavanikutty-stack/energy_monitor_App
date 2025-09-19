@@ -1,5 +1,5 @@
 // src/components/EnergyMonitor.js
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState } from "react";
 import "./EnergyMonitor.css";
 import MultiSelect from "./MultiSelect";
 
@@ -66,21 +66,6 @@ const EnergyMonitor = () => {
 	const [selectedAppliances, setSelectedAppliances] = useState([]);
 	const [errors, setErrors] = useState({});
 	const [selectedCategory, setSelectedCategory] = useState("All");
-	const [isDarkMode, setIsDarkMode] = useState(() => {
-		// Check localStorage for saved theme preference
-		const savedTheme = localStorage.getItem('theme');
-		return savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-	});
-
-	// Apply theme to document body
-	useEffect(() => {
-		document.body.className = isDarkMode ? 'dark-theme' : 'light-theme';
-		localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-	}, [isDarkMode]);
-
-	const toggleTheme = () => {
-		setIsDarkMode(prev => !prev);
-	};
 
 	// Unique categories for dropdown (Task 1)
 	const categories = useMemo(() => {
@@ -149,15 +134,6 @@ const EnergyMonitor = () => {
 
 	return (
 		<div className="energy-monitor-container">
-			{/* Theme Toggle Button */}
-			<button 
-				className="theme-toggle"
-				onClick={toggleTheme}
-				aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
-			>
-				{isDarkMode ? '☀️' : '🌙'}
-			</button>
-
 			<div className="header-section">
 				<h1>Home Energy Monitor ⚡️</h1>
 				<p className="subtitle">

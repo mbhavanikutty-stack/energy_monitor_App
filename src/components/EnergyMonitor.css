@@ -49,8 +49,8 @@
   --accent-red: #ef4444;
   --accent-red-light: #7f1d1d;
   --accent-red-dark: #dc2626;
-  --dropdown-bg: #1e3a8a;
-  --dropdown-hover: #3b82f6;
+  --dropdown-bg: #e3f2fd;
+  --dropdown-hover: #bbdefb;
   --card-bg: #1e293b;
   --input-bg: #334155;
   --tag-bg: #1e40af;
@@ -73,30 +73,7 @@ body {
   position: relative;
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: var(--card-bg);
-  border: 2px solid var(--border-primary);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px var(--shadow-light);
-}
 
-.theme-toggle:hover {
-  transform: scale(1.1) rotate(15deg);
-  box-shadow: 0 6px 20px var(--shadow-medium);
-  border-color: var(--accent-blue-medium);
-}
 
 .header-section {
   text-align: center;
@@ -170,6 +147,7 @@ h1 {
   background: var(--dropdown-bg);
   transition: all 0.3s ease;
   cursor: pointer;
+  color: var(--text-primary);
 }
 
 .form-field select:hover,
@@ -177,6 +155,17 @@ h1 {
   background: var(--dropdown-hover);
   transform: translateY(-1px);
   box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+.form-field select option {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  padding: 8px 12px;
+}
+
+.form-field select option:hover {
+  background: var(--accent-blue-medium);
+  color: var(--bg-primary);
 }
 
 .helper-text {
