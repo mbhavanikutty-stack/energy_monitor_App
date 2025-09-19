@@ -3,6 +3,7 @@ import React, { useMemo, useState } from "react";
 import "./EnergyMonitor.css";
 import MultiSelect from "./MultiSelect";
 import SuggestionsGrid from "./SuggestionsGrid";
+import { parseSuggestions } from "../utils/parseSuggestions";
 
 const appliances = [
 	// Kitchen
@@ -131,7 +132,9 @@ const EnergyMonitor = () => {
 			const parsedTips = generatedText
 				.split(/\n\*\s?/)
 				.filter((tip) => tip.trim() !== "");
-			setTips(parsedTips);
+			const parsedJson = parseSuggestions(parsedTips);
+			setTips(parsedJson);
+			console.log(parsedJson);
 		} catch (error) {
 			console.error("Error fetching data:", error);
 			alert(
@@ -181,6 +184,7 @@ const EnergyMonitor = () => {
 							onChange={(e) => setBillAmount(e.target.value)}
 							aria-invalid={!!errors.billAmount}
 							aria-describedby="billAmountHelp"
+							autoComplete="billing cc-number"
 						/>
 						<small id="billAmountHelp" className="helper-text">
 							Approximate latest monthly total.
@@ -200,6 +204,7 @@ const EnergyMonitor = () => {
 							value={householdSize}
 							onChange={(e) => setHouseholdSize(e.target.value)}
 							aria-invalid={!!errors.householdSize}
+							autoComplete="cc-number"
 						/>
 						<small className="helper-text">Number of people living at home.</small>
 						{errors.householdSize && (

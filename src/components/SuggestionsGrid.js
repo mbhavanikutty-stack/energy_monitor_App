@@ -16,62 +16,17 @@ const SuggestionsGrid = ({ tips, onGetStarted, billAmount }) => {
 		}
 	};
 
-	const getImplementationTime = (tip) => {
-		const tipLower = tip.toLowerCase();
-
-		if (tipLower.includes("led") || tipLower.includes("light bulb"))
-			return "30 minutes";
-		if (tipLower.includes("thermostat")) return "2 hours";
-		if (tipLower.includes("dishwasher") || tipLower.includes("washing"))
-			return "5 minutes";
-		if (tipLower.includes("unplug") || tipLower.includes("power strip"))
-			return "15 minutes";
-		if (tipLower.includes("insulation") || tipLower.includes("seal"))
-			return "4 hours";
-		if (tipLower.includes("water heater")) return "1 hour";
-		if (tipLower.includes("smart") || tipLower.includes("programmable"))
-			return "45 minutes";
-
-		return "Quick setup";
+	// Calculate total savings from parsed JSON tips
+	const extractNumericSavings = (potentialSavings) => {
+		if (!potentialSavings) return 0;
+		// Try to extract the first number from the string (e.g., "$50–$100 per year")
+		const match = potentialSavings.match(/\$(\d+)/);
+		return match ? parseInt(match[1], 10) : 0;
 	};
 
-	const getDifficulty = (tip) => {
-		const tipLower = tip.toLowerCase();
-
-		if (tipLower.includes("professional") || tipLower.includes("contractor"))
-			return "Professional";
-		if (tipLower.includes("insulation") || tipLower.includes("hvac"))
-			return "Moderate";
-		if (tipLower.includes("thermostat") || tipLower.includes("smart"))
-			return "Easy";
-		if (tipLower.includes("unplug") || tipLower.includes("adjust"))
-			return "Very Easy";
-
-		return "Easy";
-	};
-
-	const extractSavings = (tip) => {
-		if (!tip) return null;
-
-		// Look for patterns like "$50", "$100-200", "save $X"
-		const savingsMatch = tip.match(/\$(\d+(?:-\d+)?)/);
-		if (savingsMatch) {
-			return parseInt(savingsMatch[1].split("-")[0]);
-		}
-
-		// Look for "save X dollars" pattern
-		const dollarsMatch = tip.match(/save (\d+) dollars?/i);
-		if (dollarsMatch) {
-			return parseInt(dollarsMatch[1]);
-		}
-
-		return Math.floor(Math.random() * 50) + 10; // Fallback random savings
-	};
-
-	// Calculate total savings
 	const calculateSavings = () => {
 		const monthlySavings = tips.reduce((total, tip) => {
-			return total + extractSavings(tip);
+			return total + extractNumericSavings(tip.potentialSavings);
 		}, 0);
 
 		const annualSavings = monthlySavings * 12;
@@ -103,12 +58,12 @@ const SuggestionsGrid = ({ tips, onGetStarted, billAmount }) => {
 						<SuggestionCard
 							key={index}
 							index={index}
-							icon={getIconForTip(tip)}
-							title={extractTitleFromTip(tip)}
-							description={extractDescriptionFromTip(tip)}
-							implementationTime={getImplementationTime(tip)}
-							difficulty={getDifficulty(tip)}
-							savings={extractSavings(tip)}
+							icon={tip.icon}
+							title={tip.title}
+							description={tip.description}
+							implementationTime={tip.timeToImplement}
+							difficulty={tip.difficulty}
+							savings={tip.potentialSavings}
 							onGetStarted={() => handleGetStarted(tip, index)}
 						/>
 					)
