@@ -1,9 +1,5 @@
 import React from "react";
-import SuggestionCard, {
-	extractTitleFromTip,
-	extractDescriptionFromTip,
-	getIconForTip,
-} from "./SuggestionCard";
+import SuggestionCard from "./SuggestionCard";
 import "./SuggestionsGrid.css";
 
 const SuggestionsGrid = ({ tips, onGetStarted, billAmount }) => {
