@@ -1,6 +1,5 @@
 import React from "react";
 import "./ContactPage.css";
-import { Link } from "react-router-dom";
 
 const ContactPage = () => {
 	return (
@@ -15,9 +14,10 @@ const ContactPage = () => {
 				<div className="contact-details">
 					<div className="contact-detail">
 						<span className="contact-label">Email:</span>
-						<Link to="support@ecosaver.app" className="email-link">
+
+						<a href="mailto:support@ecosaver.app" className="email-link">
 							support@ecosaver.app
-						</Link>
+						</a>
 					</div>
 					<div className="contact-detail">
 						<span className="contact-label">Phone:</span>
@@ -28,36 +28,60 @@ const ContactPage = () => {
 						<span>Available Monday to Friday, 9 AM - 5 PM</span>
 					</div>
 				</div>
-				<Link to="/contact">
-					<button className="live-chat-button">Live Chat &rarr;</button>
-				</Link>
+
+				<button className="live-chat-button">Live Chat &rarr;</button>
 			</div>
 			<div className="contact-right">
-				<form className="contact-form">
+				<form
+					// The action URL should be your unique Formspree endpoint
+					action="https://formspree.io/f/mwpngwqp"
+					method="POST"
+					className="contact-form"
+				>
 					<div className="form-row">
 						<div className="form-group">
 							<label htmlFor="first-name">First Name</label>
-							<input type="text" id="first-name" placeholder="First Name" />
+
+							<input
+								type="text"
+								id="first-name"
+								name="firstName"
+								placeholder="First Name"
+							/>
 						</div>
 						<div className="form-group">
 							<label htmlFor="last-name">Last Name</label>
-							<input type="text" id="last-name" placeholder="Last Name" />
+
+							<input
+								type="text"
+								id="last-name"
+								name="lastName"
+								placeholder="Last Name"
+							/>
 						</div>
 					</div>
 					<div className="form-group">
 						<label htmlFor="email">Email</label>
-						<input type="email" id="email" placeholder="Email" />
+
+						<input type="email" id="email" name="email" placeholder="Email" />
 					</div>
 					<div className="form-group">
 						<label htmlFor="message">How can we help you?</label>
-						<textarea id="message" placeholder="Your message"></textarea>
+
+						<textarea
+							id="message"
+							name="message"
+							placeholder="Your message"
+						></textarea>
 					</div>
+
+					{/* THIS IS THE NEW LINE FOR REDIRECTION */}
+					<input type="hidden" name="_next" value="/" />
+
 					<div className="submit-button-container">
-						<Link to="/contact">
-							<button type="submit" className="send-message-button">
-								Send Message &rarr;
-							</button>
-						</Link>
+						<button type="submit" className="send-message-button">
+							Send Message &rarr;
+						</button>
 					</div>
 				</form>
 			</div>
