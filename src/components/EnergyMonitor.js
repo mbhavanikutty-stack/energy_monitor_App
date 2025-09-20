@@ -166,7 +166,7 @@ const EnergyMonitor = () => {
 	return (
 		<div className="energy-monitor-container">
 			<div className="header-section">
-				<h1>Home Energy Monitor ⚡️</h1>
+				<h1>EcoSense ⚡️</h1>
 				<p className="subtitle">
 					Get quick, personalized tips to lower your electricity bill.
 				</p>
