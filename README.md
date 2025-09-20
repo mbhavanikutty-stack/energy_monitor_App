@@ -33,6 +33,7 @@ To run EcoSaver locally, follow these steps:
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/mbhavanikutty-stack/energy_monitor_App.git
+    
     cd energy_monitor_App
     ```
 2.  **Install dependencies:**
@@ -48,7 +49,8 @@ To run EcoSaver locally, follow these steps:
 ## Deployment:
 
 This project is configured for continuous deployment with Netlify. A `netlify.toml` file is included for build settings and redirects.
-![Deployment QR Code](./public/ecosense.svg.svg "Optional title for the SVG")
+
+![Deployment QR Code](./public/ecosense.svg "Optional title for the SVG")
 
 ## Contact:
 

@@ -45,14 +45,6 @@ const SuggestionCard = ({
 						</div>
 					)}
 				</div>
-
-				<button
-					className="get-started-btn"
-					onClick={onGetStarted}
-					aria-label={`Get started with ${title}`}
-				>
-					Get Started
-				</button>
 			</div>
 		</div>
 	);
