@@ -1,0 +1,170 @@
+.ms-container {
+  position: relative;
+  width: 100%;
+}
+
+.ms-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-secondary, #d1d5db);
+  border-radius: 8px;
+  background: var(--dropdown-bg, #e3f2fd);
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.3s ease;
+  color: var(--text-primary, #1f2937);
+}
+
+.ms-control:hover {
+  background: var(--dropdown-hover, #bbdefb);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ms-placeholder {
+  color: var(--text-secondary, #6b7280);
+  font-size: 14px;
+}
+
+.ms-count {
+  background: var(--text-primary, #111827);
+  color: var(--bg-primary, #fff);
+  border-radius: 999px;
+  font-size: 12px;
+  padding: 2px 8px;
+}
+
+.ms-caret {
+  color: var(--text-secondary, #6b7280);
+}
+
+.ms-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border-primary, #e5e7eb);
+  border-radius: 10px;
+  box-shadow: 0 12px 28px var(--shadow-light, rgba(0,0,0,0.12));
+  overflow: hidden;
+}
+
+.ms-search {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-primary, #f3f4f6);
+  background: var(--card-bg, #fff);
+}
+
+.ms-search input {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 0 4px;
+  border: 1px solid var(--border-secondary, #d1d5db);
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: var(--input-bg, #fff);
+  color: var(--text-primary, #1f2937);
+  transition: all 0.3s ease;
+}
+
+.ms-search input::placeholder {
+  color: var(--text-secondary, #6b7280);
+}
+
+.ms-search input:focus {
+  outline: none;
+  border-color: var(--accent-blue-medium, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.ms-list {
+  max-height: 220px;
+  overflow: auto;
+  background: var(--bg-secondary, #fff);
+}
+
+.ms-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: var(--text-primary, #1f2937);
+}
+
+.ms-item:hover {
+  background: var(--accent-blue-medium, #3b82f6);
+  color: var(--bg-primary, #fff);
+}
+
+.ms-item.selected {
+  background: var(--accent-blue-light, #dbeafe);
+  color: var(--accent-blue-dark, #1e40af);
+}
+
+.ms-item + .ms-item {
+  border-top: 1px solid var(--border-primary, #f3f4f6);
+}
+
+.ms-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+.ms-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border-top: 1px solid var(--border-primary, #f3f4f6);
+  background: var(--bg-secondary, #fafafa);
+}
+
+.ms-link {
+  background: transparent;
+  border: none;
+  color: var(--accent-blue-medium, #2563eb);
+  cursor: pointer;
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.ms-link:hover {
+  color: var(--accent-blue-dark, #1d4ed8);
+}
+
+.ms-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.ms-chip {
+  background: var(--bg-secondary, #f3f4f6);
+  border: 1px solid var(--border-primary, #e5e7eb);
+  padding: 4px 8px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ms-chip button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-secondary, #6b7280);
+}
