@@ -39,12 +39,7 @@ To run EcoSaver locally, follow these steps:
     ```bash
     npm install
     ```
-3.  **Set up your environment variables:**
-    Create a `.env` file in the root directory and add your Google Gemini API key:
-    ```
-    REACT_APP_GEMINI_API_KEY=YOUR_GEMINI_API_KEY
-    ```
-4.  **Start the development server:**
+3.  **Start the development server:**
     ```bash
     npm start
     ```
@@ -53,9 +48,7 @@ To run EcoSaver locally, follow these steps:
 ## Deployment:
 
 This project is configured for continuous deployment with Netlify. A `netlify.toml` file is included for build settings and redirects.
-
-<!-- Add SVG QR of the Deployment -->
-![Deployment QR Code](public\ecosense.svg.svg "Optional title for the SVG")
+![Deployment QR Code](./public/ecosense.svg.svg "Optional title for the SVG")
 
 ## Contact:
 
