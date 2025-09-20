@@ -18,7 +18,7 @@ const Layout = () => {
 
 			<footer className="site-footer">
 				<div className="container">
-					<p>© {new Date().getFullYear()} Energy Saver. Save smart, live better.</p>
+					<p>© {new Date().getFullYear()} EcoSense. Save smart, live better.</p>
 				</div>
 			</footer>
 		</div>

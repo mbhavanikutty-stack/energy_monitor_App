@@ -5,7 +5,7 @@ import * as THREE from 'three';
 
 const FuturisticAnimation = () => {
   return (
-    <Canvas style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
+    <Canvas className="futuristic-animation-canvas">
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
       <GlowingShape />

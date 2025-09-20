@@ -20,8 +20,8 @@ const MobileNav = () => {
 		<div className="mobile-nav">
 			<div className="mobile-nav-container">
 				<Link to="/" className="brand" onClick={closeMenu}>
-					<img src="/logo192.png" alt="Energy Saver" className="brand-logo" />
-					<span className="brand-text">Energy Saver</span>
+					<img src="/logo192.png" alt="EcoSense" className="brand-logo" />
+					<span className="brand-text">EcoSense</span>
 				</Link>
 
 				<div className="mobile-nav-right">

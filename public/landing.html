@@ -1,304 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Energy Saver - Futuristic Landing Page</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color-light: #007bff;
-      --background-color-light: #f0f2f5;
-      --text-color-light: #0a0a1a;
-      --card-background-light: #ffffff;
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>EcoSense - Futuristic Landing Page</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--primary-color-light: #007bff;
+				--background-color-light: #f0f2f5;
+				--text-color-light: #0a0a1a;
+				--card-background-light: #ffffff;
 
-      --primary-color-dark: #00f0ff;
-      --background-color-dark: #0a0a1a;
-      --text-color-dark: #e0e0e0;
-      --card-background-dark: #1a1a2a;
-    }
+				--primary-color-dark: #00f0ff;
+				--background-color-dark: #0a0a1a;
+				--text-color-dark: #e0e0e0;
+				--card-background-dark: #1a1a2a;
+			}
 
-    [data-theme='light'] {
-      --primary-color: var(--primary-color-light);
-      --background-color: var(--background-color-light);
-      --text-color: var(--text-color-light);
-      --card-background: var(--card-background-light);
-    }
+			[data-theme="light"] {
+				--primary-color: var(--primary-color-light);
+				--background-color: var(--background-color-light);
+				--text-color: var(--text-color-light);
+				--card-background: var(--card-background-light);
+			}
 
-    [data-theme='dark'] {
-      --primary-color: var(--primary-color-dark);
-      --background-color: var(--background-color-dark);
-      --text-color: var(--text-color-dark);
-      --card-background: var(--card-background-dark);
-    }
+			[data-theme="dark"] {
+				--primary-color: var(--primary-color-dark);
+				--background-color: var(--background-color-dark);
+				--text-color: var(--text-color-dark);
+				--card-background: var(--card-background-dark);
+			}
 
-    body {
-      background-color: var(--background-color);
-      color: var(--text-color);
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+			body {
+				background-color: var(--background-color);
+				color: var(--text-color);
+				font-family: "Inter", sans-serif;
+				margin: 0;
+				transition: background-color 0.3s ease, color 0.3s ease;
+			}
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
 
-    .hero-section {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80');
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-    }
+			.hero-section {
+				background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+					url("https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80");
+				background-size: cover;
+				background-position: center;
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				color: white;
+			}
 
-    .hero-headline {
-      font-size: 4rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-    }
+			.hero-headline {
+				font-size: 4rem;
+				font-weight: 800;
+				margin-bottom: 1rem;
+				text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+			}
 
-    .hero-tagline {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-    }
+			.hero-tagline {
+				font-size: 1.25rem;
+				margin-bottom: 2rem;
+			}
 
-    .cta-button {
-      background: transparent;
-      color: var(--primary-color);
-      border: 2px solid var(--primary-color);
-      padding: 1rem 2rem;
-      font-size: 1.25rem;
-      font-weight: 600;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 0 15px var(--primary-color);
-    }
+			.cta-button {
+				background: transparent;
+				color: var(--primary-color);
+				border: 2px solid var(--primary-color);
+				padding: 1rem 2rem;
+				font-size: 1.25rem;
+				font-weight: 600;
+				border-radius: 50px;
+				cursor: pointer;
+				transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+				box-shadow: 0 0 15px var(--primary-color);
+			}
 
-    .cta-button:hover {
-      background-color: var(--primary-color);
-      color: var(--background-color);
-      transform: scale(1.05);
-    }
+			.cta-button:hover {
+				background-color: var(--primary-color);
+				color: var(--background-color);
+				transform: scale(1.05);
+			}
 
-    .section {
-      padding: 6rem 0;
-    }
+			.section {
+				padding: 6rem 0;
+			}
 
-    .section-headline {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 4rem;
-    }
+			.section-headline {
+				text-align: center;
+				font-size: 2.5rem;
+				font-weight: 800;
+				margin-bottom: 4rem;
+			}
 
-    .advantages-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
+			.advantages-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 2rem;
+			}
 
-    .advantage-card {
-      background-color: var(--card-background);
-      padding: 2.5rem;
-      border-radius: 1rem;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid transparent;
-    }
+			.advantage-card {
+				background-color: var(--card-background);
+				padding: 2.5rem;
+				border-radius: 1rem;
+				text-align: center;
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+				border: 1px solid transparent;
+			}
 
-    .advantage-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      border-color: var(--primary-color);
-    }
+			.advantage-card:hover {
+				transform: translateY(-10px);
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+				border-color: var(--primary-color);
+			}
 
-    .advantage-icon {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary-color);
-    }
+			.advantage-icon {
+				font-size: 3rem;
+				margin-bottom: 1.5rem;
+				color: var(--primary-color);
+			}
 
-    .advantage-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
+			.advantage-title {
+				font-size: 1.5rem;
+				font-weight: 700;
+				margin-bottom: 1rem;
+			}
 
-    .growth-columns {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-    }
+			.growth-columns {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 3rem;
+			}
 
-    .growth-column h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: var(--primary-color);
-    }
+			.growth-column h3 {
+				font-size: 1.5rem;
+				font-weight: 700;
+				margin-bottom: 1.5rem;
+				color: var(--primary-color);
+			}
 
-    .growth-column ul {
-      list-style: none;
-      padding: 0;
-    }
+			.growth-column ul {
+				list-style: none;
+				padding: 0;
+			}
 
-    .growth-column li {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-    }
+			.growth-column li {
+				font-size: 1rem;
+				margin-bottom: 1rem;
+				display: flex;
+				align-items: center;
+			}
 
-    .growth-column li svg {
-      width: 24px;
-      height: 24px;
-      margin-right: 1rem;
-      fill: var(--primary-color);
-    }
+			.growth-column li svg {
+				width: 24px;
+				height: 24px;
+				margin-right: 1rem;
+				fill: var(--primary-color);
+			}
 
-    .footer {
-      padding: 4rem 0;
-      text-align: center;
-      border-top: 1px solid var(--text-color);
-    }
+			.footer {
+				padding: 4rem 0;
+				text-align: center;
+				border-top: 1px solid var(--text-color);
+			}
 
-    .theme-switcher {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: var(--card-background);
-      color: var(--text-color);
-      border: 1px solid var(--text-color);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 1000;
-    }
+			.theme-switcher {
+				position: fixed;
+				top: 1rem;
+				right: 1rem;
+				background: var(--card-background);
+				color: var(--text-color);
+				border: 1px solid var(--text-color);
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				font-size: 1.5rem;
+				cursor: pointer;
+				z-index: 1000;
+			}
 
-    @media (max-width: 768px) {
-      .hero-headline {
-        font-size: 3rem;
-      }
-    }
-  </style>
-</head>
-<body>
+			@media (max-width: 768px) {
+				.hero-headline {
+					font-size: 3rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<button class="theme-switcher" onclick="toggleTheme()">🌙</button>
 
-  <button class="theme-switcher" onclick="toggleTheme()">🌙</button>
+		<header class="hero-section">
+			<div class="container">
+				<h1 class="hero-headline">EcoSense</h1>
+				<p class="hero-tagline">Your Personalized Energy-Saving Assistant</p>
+				<button class="cta-button">Get Started</button>
+			</div>
+		</header>
 
-  <header class="hero-section">
-    <div class="container">
-      <h1 class="hero-headline">Energy Saver</h1>
-      <p class="hero-tagline">Your Personalized Energy-Saving Assistant</p>
-      <button class="cta-button">Get Started</button>
-    </div>
-  </header>
+		<main>
+			<section id="overview" class="section">
+				<div class="container">
+					<h2 class="section-headline">Overview</h2>
+					<p
+						style="
+							text-align: center;
+							max-width: 800px;
+							margin: 0 auto;
+							font-size: 1.1rem;
+						"
+					>
+						This application is a personalized energy-saving assistant designed for
+						environmentally conscious and budget-aware households. It addresses the
+						common challenge of high energy bills by providing users with actionable,
+						data-driven recommendations to reduce their energy consumption. By
+						analyzing user-specific data, the application offers tailored advice,
+						making it easier for households to save money and reduce their carbon
+						footprint.
+					</p>
+				</div>
+			</section>
 
-  <main>
-    <section id="overview" class="section">
-      <div class="container">
-        <h2 class="section-headline">Overview</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
-          This application is a personalized energy-saving assistant designed for environmentally conscious and budget-aware households. It addresses the common challenge of high energy bills by providing users with actionable, data-driven recommendations to reduce their energy consumption. By analyzing user-specific data, the application offers tailored advice, making it easier for households to save money and reduce their carbon footprint.
-        </p>
-      </div>
-    </section>
+			<section
+				id="advantages"
+				class="section"
+				style="background-color: var(--card-background)"
+			>
+				<div class="container">
+					<h2 class="section-headline">Key Advantages</h2>
+					<div class="advantages-grid">
+						<div class="advantage-card">
+							<div class="advantage-icon">🧑</div>
+							<h3 class="advantage-title">Deep Personalization</h3>
+							<p>
+								Recommendations based on your specific household size, location, and
+								appliance usage.
+							</p>
+						</div>
+						<div class="advantage-card">
+							<div class="advantage-icon">👍</div>
+							<h3 class="advantage-title">Simplicity & Ease of Use</h3>
+							<p>
+								Input your data quickly and receive personalized suggestions without
+								technical expertise.
+							</p>
+						</div>
+						<div class="advantage-card">
+							<div class="advantage-icon">💰</div>
+							<h3 class="advantage-title">Direct Cost Savings</h3>
+							<p>
+								Tangible financial benefits by significantly reducing your monthly
+								energy bills.
+							</p>
+						</div>
+						<div class="advantage-card">
+							<div class="advantage-icon">💡</div>
+							<h3 class="advantage-title">Actionable & Focused Insights</h3>
+							<p>
+								Five clear and concise suggestions, empowering you to take immediate
+								action.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
 
-    <section id="advantages" class="section" style="background-color: var(--card-background);">
-      <div class="container">
-        <h2 class="section-headline">Key Advantages</h2>
-        <div class="advantages-grid">
-          <div class="advantage-card">
-            <div class="advantage-icon">🧑</div>
-            <h3 class="advantage-title">Deep Personalization</h3>
-            <p>Recommendations based on your specific household size, location, and appliance usage.</p>
-          </div>
-          <div class="advantage-card">
-            <div class="advantage-icon">👍</div>
-            <h3 class="advantage-title">Simplicity & Ease of Use</h3>
-            <p>Input your data quickly and receive personalized suggestions without technical expertise.</p>
-          </div>
-          <div class="advantage-card">
-            <div class="advantage-icon">💰</div>
-            <h3 class="advantage-title">Direct Cost Savings</h3>
-            <p>Tangible financial benefits by significantly reducing your monthly energy bills.</p>
-          </div>
-          <div class="advantage-card">
-            <div class="advantage-icon">💡</div>
-            <h3 class="advantage-title">Actionable & Focused Insights</h3>
-            <p>Five clear and concise suggestions, empowering you to take immediate action.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+			<section id="growth" class="section">
+				<div class="container">
+					<h2 class="section-headline">Potential Growth</h2>
+					<div class="growth-columns">
+						<div class="growth-column">
+							<h3>New Features</h3>
+							<ul>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<path
+											d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"
+										/></svg
+									>Real-time energy monitoring
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<path
+											d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"
+										/></svg
+									>Gamification and community challenges
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<path
+											d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"
+										/></svg
+									>Smart home integration
+								</li>
+							</ul>
+						</div>
+						<div class="growth-column">
+							<h3>Strategic Partnerships</h3>
+							<ul>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<path
+											d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"
+										/></svg
+									>Collaborations with utility companies
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<path
+											d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"
+										/></svg
+									>Partnerships with appliance retailers
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<path
+											d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"
+										/></svg
+									>Integration with smart home platforms
+								</li>
+							</ul>
+						</div>
+						<div class="growth-column">
+							<h3>User Adoption</h3>
+							<ul>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<path
+											d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"
+										/></svg
+									>Implement a referral program
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<path
+											d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"
+										/></svg
+									>Offer tiered subscription models
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<path
+											d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"
+										/></svg
+									>Create a community forum
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
 
-    <section id="growth" class="section">
-      <div class="container">
-        <h2 class="section-headline">Potential Growth</h2>
-        <div class="growth-columns">
-          <div class="growth-column">
-            <h3>New Features</h3>
-            <ul>
-              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"/></svg>Real-time energy monitoring</li>
-              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"/></svg>Gamification and community challenges</li>
-              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"/></svg>Smart home integration</li>
-            </ul>
-          </div>
-          <div class="growth-column">
-            <h3>Strategic Partnerships</h3>
-            <ul>
-              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"/></svg>Collaborations with utility companies</li>
-              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"/></svg>Partnerships with appliance retailers</li>
-              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"/></svg>Integration with smart home platforms</li>
-            </ul>
-          </div>
-          <div class="growth-column">
-            <h3>User Adoption</h3>
-            <ul>
-              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"/></svg>Implement a referral program</li>
-              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"/></svg>Offer tiered subscription models</li>
-              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93V4.07z"/></svg>Create a community forum</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+		<footer class="footer">
+			<div class="container">
+				<p>&copy; 2025 EcoSense. All rights reserved.</p>
+			</div>
+		</footer>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Energy Saver. All rights reserved.</p>
-    </div>
-  </footer>
+		<script>
+			const themeSwitcher = document.querySelector(".theme-switcher");
+			const doc = document.documentElement;
 
-  <script>
-    const themeSwitcher = document.querySelector('.theme-switcher');
-    const doc = document.documentElement;
+			const theme = localStorage.getItem("theme") || "dark";
+			doc.setAttribute("data-theme", theme);
+			themeSwitcher.textContent = theme === "dark" ? "☀️" : "🌙";
 
-    const theme = localStorage.getItem('theme') || 'dark';
-    doc.setAttribute('data-theme', theme);
-    themeSwitcher.textContent = theme === 'dark' ? '☀️' : '🌙';
-
-    function toggleTheme() {
-      const currentTheme = doc.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      doc.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      themeSwitcher.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-    }
-  </script>
-
-</body>
+			function toggleTheme() {
+				const currentTheme = doc.getAttribute("data-theme");
+				const newTheme = currentTheme === "dark" ? "light" : "dark";
+				doc.setAttribute("data-theme", newTheme);
+				localStorage.setItem("theme", newTheme);
+				themeSwitcher.textContent = newTheme === "dark" ? "☀️" : "🌙";
+			}
+		</script>
+	</body>
 </html>

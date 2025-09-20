@@ -11,8 +11,8 @@ const DesktopNav = () => {
 		<div className="desktop-nav">
 			<div className="nav-container">
 				<Link to="/" className="brand">
-					<img src="/logo192.png" alt="Energy Saver" className="brand-logo" />
-					<span className="brand-text">Energy Saver</span>
+					<img src="/logo192.png" alt="EcoSense" className="brand-logo" />
+					<span className="brand-text">EcoSense</span>
 				</Link>
 
 				<div className="nav-center">

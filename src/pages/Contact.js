@@ -73,17 +73,17 @@ const Contact = () => {
 							padding: 16,
 						}}
 					>
-						<p>Subject: Welcome to Energy Saver</p>
+						<p>Subject: Welcome to EcoSense</p>
 						<p>Hi {firstName || "there"},</p>
 						<p>
-							Thanks for reaching out to Energy Saver. A member of our team will reply
+							Thanks for reaching out to EcoSense. A member of our team will reply
 							shortly. In the meantime, you can start exploring personalized tips on
 							the Suggestions page.
 						</p>
 						<p>
 							Stay efficient,
 							<br />
-							The Energy Saver Team
+							The EcoSense Team
 						</p>
 					</div>
 				</div>
