@@ -216,7 +216,7 @@ const EnergyMonitor = () => {
 						<label htmlFor="city">City</label>
 						<input
 							id="city"
-							placeholder="e.g. Austin"
+							placeholder="e.g. Melbourne"
 							value={location}
 							onChange={(e) => setLocation(e.target.value)}
 							aria-invalid={!!errors.location}
@@ -231,18 +231,17 @@ const EnergyMonitor = () => {
 						<label htmlFor="country">Country</label>
 						<input
 							id="country"
-							placeholder="e.g. USA"
+							placeholder="e.g. AU"
 							value={country}
 							onChange={(e) => setCountry(e.target.value)}
 							aria-invalid={!!errors.country}
 							autoComplete="country"
 						/>
+						<small className="helper-text">
+							2-letter country code (e.g. US, AU, IN).
+						</small>
 						{errors.country && <div className="error-text">{errors.country}</div>}
 					</div>
-				</div>
-
-				{/* Category and Appliances side by side */}
-				<div className="appliances-row">
 					<div className="form-field">
 						<label htmlFor="category">Category</label>
 						<select

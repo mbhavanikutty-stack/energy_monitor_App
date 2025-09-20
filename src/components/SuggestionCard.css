@@ -15,7 +15,7 @@
 .suggestion-card:hover {
   transform: scale(1.02);
   box-shadow: 0 8px 32px var(--shadow-medium);
-  border-color: var(--accent-green);
+  border-color: #01989e;
 }
 
 .suggestion-card::before {
@@ -25,7 +25,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--accent-green), var(--accent-green-medium));
+  background: linear-gradient(to right, #01989e, #0283bf);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -45,7 +45,7 @@
 .card-icon {
   width: 48px;
   height: 48px;
-  background: var(--accent-green-light);
+  background: linear-gradient(to right, #016e71, #01496b);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -55,12 +55,12 @@
 }
 
 .suggestion-card:hover .card-icon {
-  background: var(--accent-green);
+  background: linear-gradient(to right, #01989e, #0283bf);
   transform: scale(1.1);
 }
 
 .savings-badge {
-  background: linear-gradient(135deg, var(--accent-green), var(--accent-green-medium));
+  background: linear-gradient(to right, #01989e, #0283bf);
   color: white;
   padding: 0.5rem 0.75rem;
   border-radius: 20px;
@@ -155,7 +155,7 @@
 }
 
 .get-started-btn {
-  background: var(--accent-green);
+  background: linear-gradient(to right, #01989e, #0283bf);
   color: white;
   border: none;
   padding: 0.75rem 1.25rem;

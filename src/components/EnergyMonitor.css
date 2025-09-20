@@ -77,14 +77,65 @@ body {
   padding: 24px;
   font-family: Arial, sans-serif;
   position: relative;
-  text-align: center;
+  text-align: left;
 }
-
-
 
 .header-section {
   text-align: center;
   margin-bottom: 32px;
+}
+
+.helper-text {
+  margin-top: 5px;
+  color: var(--text-secondary);
+}
+
+.empty-state{
+  text-align: center;
+  color: var(--text-secondary);
+  margin-top: 20px;
+}
+
+.selected-appliances-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.appliance-tag {
+  background: var(--tag-border);
+  color: #fff;
+  border: 1px solid var(--tag-border);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.appliance-tag:hover {
+  background: var(--accent-blue-dark);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 2px 5px var(--accent-blue-dark);
+  border-color: var(--accent-blue-dark);
+  transition: all 0.3s ease;
+}
+
+.tag-remove {
+  margin-left: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--accent-red);
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  transform: scale(1.2);
+}
+
+/* Add hover effect for the tag remove with animation */
+.tag-remove:hover {
+  color: var(--accent-red-dark);
 }
 
 h1 {
@@ -99,17 +150,12 @@ h1 {
   transition: color 0.3s ease;
 }
 
-.card {
-  background: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--shadow-light);
-  padding: 16px;
-  border: 1px solid var(--border-primary);
-  transition: all 0.3s ease;
-  text-align: -webkit-auto;
-}
-
 .input-form {
+  background-color: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
   margin-bottom: 24px;
 }
 
@@ -128,107 +174,27 @@ h1 {
 .form-field {
   display: flex;
   flex-direction: column;
-  text-align: left;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .form-field label {
-  font-weight: 600;
-  color: var(--text-tertiary);
-  margin-bottom: 6px;
-  transition: color 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
 }
 
 .form-field input,
-.form-field select {
-  padding: 10px 12px;
-  border: 1px solid var(--border-secondary);
-  border-radius: 8px;
-  font-size: 14px;
-  background: var(--input-bg);
+.form-field select,
+.form-field textarea {
+  background-color: var(--background-color);
   color: var(--text-primary);
-  transition: all 0.3s ease;
-}
-
-.form-field select, 
-.dropdown-button {
-  min-height: 42px;
-  background: var(--dropdown-bg);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  color: var(--text-primary);
-}
-
-.form-field select:hover,
-.dropdown-button:hover {
-  background: var(--dropdown-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px var(--shadow-medium);
-}
-
-.form-field select option {
-  background: var(--card-bg);
-  color: var(--text-primary);
-  padding: 8px 12px;
-}
-
-.form-field select option:hover {
-  background: var(--dropdown-hover);
-  color: var(--text-primary);
-}
-
-.helper-text {
-  color: var(--text-secondary);
-  font-size: 12px;
-  margin-top: 6px;
-  transition: color 0.3s ease;
-}
-
-.error-text {
-  color: var(--accent-red);
-  font-size: 12px;
-  margin-top: 4px;
-  transition: color 0.3s ease;
-}
-
-.has-error input {
-  border-color: var(--accent-red);
-  background: var(--accent-red-light);
-}
-
-.chips {
-  margin-top: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-
-.chip {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
-  padding: 4px 8px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.3s ease;
-}
-
-.chip-remove {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 1;
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
-}
-
-.link-button {
-  background: transparent;
-  border: none;
-  color: #2563eb;
-  cursor: pointer;
+  border: 1px solid var(--card-border);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .actions {
@@ -238,15 +204,19 @@ h1 {
 }
 
 .primary {
-  padding: 10px 16px;
+  background: linear-gradient(to right, #01989e, #0283bf);
+  color: #fff;
   border: none;
-  background-color: var(--accent-green);
-  color: #ffffff;
-  border-radius: 8px;
+  border-radius: 9999px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.primary:hover:not(:disabled) {
+  transform: scale(1.05);
 }
 
 .primary:disabled {
@@ -254,180 +224,4 @@ h1 {
   cursor: not-allowed;
   color: var(--text-secondary);
   opacity: 0.6;
-}
-
-.primary:hover:not(:disabled) {
-  background-color: var(--accent-green-dark, #15803d);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px var(--accent-green-shadow, rgba(22, 163, 74, 0.3));
-}
-
-.empty-state {
-  text-align: center;
-  color: var(--text-secondary);
-  margin-top: 12px;
-  transition: color 0.3s ease;
-}
-
-/* Tips list styles removed - now using SuggestionsGrid component */
-
-/* Appliances row layout */
-.appliances-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-@media (max-width: 768px) {
-  .appliances-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-.selected-appliances-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
-  margin-top: 8px;
-  padding-top: 10px;
-  justify-content: center;
-}
-
-.appliance-tag {
-  background: var(--tag-bg);
-  border: 1px solid var(--tag-border);
-  color: var(--tag-text);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-}
-
-.tag-remove {
-  background: none;
-  border: none;
-  color: var(--tag-text);
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-  padding: 0;
-  margin: 0;
-  width: 16px;
-  height: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.tag-remove:hover {
-  background: rgba(12, 74, 110, 0.1);
-}
-
-/* Selected appliances list styles */
-.selected-appliances-list {
-  margin-top: 24px;
-}
-
-.list-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.list-header h3 {
-  margin: 0;
-  color: var(--text-primary);
-  font-size: 18px;
-  transition: color 0.3s ease;
-}
-
-.clear-all-btn {
-  background: var(--accent-red);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.clear-all-btn:hover {
-  background: var(--accent-red-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
-}
-
-.appliances-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
-}
-
-.appliance-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
-  padding: 12px 16px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.appliance-item:hover {
-  background: var(--bg-tertiary);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px var(--shadow-medium);
-}
-
-.appliance-name {
-  font-size: 14px;
-  color: var(--text-tertiary);
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.remove-btn {
-  background: var(--accent-red);
-  color: white;
-  border: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.remove-btn:hover {
-  background: var(--accent-red-dark);
-  transform: scale(1.1);
-}
-
-/* Footer styles */
-.footer {
-  text-align: center;
-  margin-top: 48px;
-  padding: 24px 0;
-  border-top: 1px solid var(--border-primary);
-  transition: border-color 0.3s ease;
-}
-
-.footer p {
-  margin: 0;
-  color: var(--text-secondary);
-  font-size: 14px;
-  transition: color 0.3s ease;
 }

@@ -1,3 +1,27 @@
+:root {
+  --background-color: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --card-background: #f9fafb;
+  --card-border: #e5e7eb;
+  --button-background: #000000;
+  --button-text: #ffffff;
+}
+
+.dark {
+  --background-color: #0f172a;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --card-background: #1e293b;
+  --card-border: #334155;
+  --button-background: #ffffff;
+  --button-text: #000000;
+}
+
+body, .contact-form, input, textarea, .button {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -7,7 +31,7 @@ html, body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: transparent;
+  background-color: var(--background-color);
 }
 
 #root {
